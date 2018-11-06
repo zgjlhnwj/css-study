@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>muomi</title>
+    <link href="../../common/css/iconfont.css" rel="stylesheet">
+    <script src="../../common/js/c.rem.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+        li {
+            list-style-type: none;
+        }
+
+        body {
+            font-size: .4rem;
+        }
+        header {
+            background: url("./images/headerbj.jpg") no-repeat;
+            background-size: 100% 100%;
+            color: #ffffff;
+            height: 6rem;
+        }
+        .top {
+            display: flex;
+            padding: .5rem 0;
+            width: 100%;
+        }
+        .top span:nth-child(1) {
+            flex: 1;
+            position: relative;
+            display: inline-block;
+            left: .6rem;
+        }
+        .top span:nth-child(2) {
+            flex: 1;
+            position: relative;
+            display: inline-block;
+            text-align: right;
+            right: .6rem;
+        }
+        .top .icon-jiantouxia {
+            position: relative;
+            display: inline-block;
+            top: 50%;
+            transform: translate(0, -50%);
+            -webkit-transform: translate(0, -50%);
+        }
+        .search {
+            text-align: center;
+        }
+        .search .s-box {
+            width: 90%;
+            height: 1rem;
+            line-height: 1rem;
+            background-color: #ffffff;
+            margin: 0 5%;
+            border-radius: .5rem;
+            color: #c0c0c0;
+        }
+        .menu {
+            padding: .8rem .3rem;
+        }
+        .menu ul{
+            display: flex;
+        }
+        .menu ul li{
+            flex: 1;
+            text-align:center
+        }
+        .menu ul li span{
+            display: block;
+        }
+        .menu ul img {
+            width: 11vw!important;
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <header>
+            <div class="top">
+                <span>  <i>北京</i> <i class="iconfont icon-jiantouxia"></i> </span>
+                <span> <i class="iconfont icon-icon_zhanghao"> </i></span>
+            </div>
+            <div class="search">
+                <div class="s-box">
+                    <i class="iconfont icon-sousuo"></i>
+                    <span>搜索商家或地点</span>
+                </div>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <img src="images/icon/meishi.jpg">
+                        <span>美食</span>
+                    </li>
+                    <li>
+                        <img src="images/icon/dianying.jpg">
+                        <span>电影</span>
+                    </li>
+                    <li>
+                        <img src="images/icon/jiudian.jpg">
+                        <span>酒店</span>
+                    </li>
+                    <li>
+                        <img src="images/icon/zhouby.jpg">
+                        <span>周边游</span>
+                    </li>
+                    <li>
+                        <img src="images/icon/waimai.jpg">
+                        <span>外卖</span>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <section>
+            <div class="lbo">
+                <ul>
+                    <li>
+                        <a>
+                            <div></div>
+                            <div>
+
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

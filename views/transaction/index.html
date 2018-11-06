@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>领取</title>
+    <!-- 引入样式 -->
+    <link href="../css/iconfont.css" rel="stylesheet">
+    <script src="../../../reslib/js/station/c.base.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-size: .32rem;
+        }
+        li {
+            list-style-type: none;
+        }
+        /** 头部样式*/
+        .header {
+            position: fixed;
+            display: flex;
+            width: 100%;
+            height: 1rem;
+            line-height: 1rem;
+            background-color: #ffffff;
+            z-index:100;
+        }
+        .header .back-icon {
+            flex: 10%;
+            width: 100%;
+            padding-left: 0.3rem;
+        }
+        .header .page-title {
+            flex: 80%;
+            font-size: .36rem;
+            text-align: center;
+            width: 100%;
+        }
+        .header .header-menu {
+            flex: 10%;
+            width: 100%;
+            padding-right: 0.3rem;
+        }
+        .middle {
+            padding-top: 1rem;
+            padding-bottom: 1.8rem;
+            display: flex;
+            flex-flow: column;
+            min-height: 80vh;
+        }
+        .address {
+            flex: 1;
+        }
+        .address ul {
+            display: flex;
+            width: 90%;
+            margin: .3rem 5%;
+            border-bottom: solid #c0c0c0 0.01rem;
+        }
+        .address ul li {
+            float: left;
+            position: relative;
+        }
+        .address .address-select {
+            flex: 10%;
+            padding-left: .1rem;
+        }
+        .address .address-select i{
+            position: absolute;
+            top:3%;
+        }
+        .address .address-content {
+            flex: 80%;
+            text-align: left;
+            line-height: .6rem;
+        }
+        .address .address-content p:nth-child(2){
+            color: #b9b6b6;
+        }
+        .address .address-toRight {
+            flex: 10%;
+            padding-right: .1rem;
+        }
+        .address .address-toRight i{
+            position: absolute;
+            top:50%;
+            transform: translate(0, -50%);
+        }
+        .address .address-select .checkout {
+            background: url("./images/sprites.png") no-repeat;
+            background-size: 3.2rem;
+            background-position-x: 3%;
+            background-position-y: 60%;
+            width: .62rem;
+            height: .62rem;
+        }
+        .address .address-select .checkin {
+            background: url("./images/sprites.png") no-repeat;
+            background-size: 3.2rem;
+            background-position-x: 28%;
+            background-position-y: 60%;
+            width: .62rem;
+            height: .62rem;
+        }
+        .address .address-select .circle {
+            background: url("./images/hollow.circle.png") no-repeat;
+            background-size: 80%;
+            width: .62rem;
+            height: .62rem;
+        }
+        .address .address-select .circled {
+            background: url("./images/select.hollow.circle.png") no-repeat;
+            background-size: 80%;
+            width: .62rem;
+            height: .62rem;
+        }
+        .middle .address-add {
+            flex: 0 0 .9rem;
+            text-align: center;
+            font-size: .34rem;
+            padding: .5rem;
+        }
+        .middle .icon-add {
+            font-size: .34rem;
+        }
+        .middle .desc {
+            flex: 0 0 1.2rem;
+            min-height: 1.2rem;
+            padding-top: .2rem;
+            padding-left: 5%;
+            color: #b9b6b6;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1.2rem;
+            line-height: 1.2rem;
+            color: #ffffff;
+            text-align: center;
+            font-size: .38rem;
+            background-color: #eac77e;
+        }
+    </style>
+</head>
+<body>
+<div id="App">
+    <header class="header">
+        <div class="back-icon"><i class="iconfont icon-fanhui"></i></div>
+        <div class="page-title">选择地领取址</div>
+        <div class="header-menu"><i class="iconfont icon-switch"></i></div>
+    </header>
+    <section class="middle">
+        <div class="address">
+            <ul class="address-list">
+                <li class="address-select"><i class="checkout"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="checkin"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="circle"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="circled"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="checkout"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="checkin"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="circle"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="circled"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="checkin"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="circle"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <ul class="address-list">
+                <li class="address-select"><i class="circled"></i></li>
+                <li class="address-content">
+                    <p>朱光杰 13311552210</p>
+                    <p>安徽省合肥市瑶海区中南海紫光阁</p>
+                </li>
+                <li class="address-toRight"><i class="iconfont icon-gengduo1"></i></li>
+            </ul>
+            <div class="address-add">
+                <i class="iconfont icon-add"></i>
+                <span>新增地址</span>
+            </div>
+        </div>
+        <div class="desc">
+            <p>1.请您务必填写正确地址,一旦提交,不可更改</p>
+            <p>2.快递仅限非西藏、新疆等偏远地区的大陆地区</p>
+            <p>3.如果有疑问,请联系QQ:120087648</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div>
+            领取
+        </div>
+    </footer>
+</div>
+</body>
+</html>
+

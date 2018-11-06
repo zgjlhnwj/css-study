@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1 maximum-scale=1, user-scalable=no">
+    <title>test-r1</title>
+    <link href="../css/iconfont.css" rel="stylesheet">
+    <script src="../../../reslib/js/station/c.base.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            top: 0;
+            left: 0;
+            background-color: #140f0e;
+            font-size: 0.26rem;
+            color: #e9cb93;
+        }
+        button {
+            color: #8E561C;
+            border-radius: 0.1rem;
+            background: -webkit-linear-gradient(#FAE3AB, #dac48e, #FAE3AB); /* Safari 5.1 - 6.0 */
+            background: linear-gradient(#FAE3AB, #dac48e, #FAE3AB); /* Safari 5.1 - 6.0 */
+        }
+        li {
+            list-style-type: none;
+        }
+        .head {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .head .tot img{
+            width: 100%;
+        }
+        .head .advert {
+            position: absolute;
+            width: 100%;
+            top: 38%;
+            text-align: center;
+        }
+        .head .desc {
+            position: absolute;
+            width: 48%;
+            bottom: 6%;
+            left: 7%;
+            text-align: center;
+            line-height: 0.5rem;
+        }
+        .btn {
+            text-align: center;
+        }
+        .btn button{
+            width: 75%;
+            height: 1rem;
+            line-height: 1rem;
+            font-size: .34rem;
+            border: none;
+        }
+        .instructions {
+            margin-top: 0.2rem;
+            padding: 0.4rem;
+        }
+        .instructions .tab{
+            font-size: 0;
+        }
+        .instructions .tab span {
+            display: inline-block;
+            height: 0.8rem;
+            line-height: 0.8rem;
+            width: 2rem;
+            text-align: center;
+            font-size: 0.26rem;
+            color: #6b4e32;
+            border: none;
+            background-color: #292219;
+        }
+        .instructions .tab .active{
+            color: #FAE2AA;
+            background: rgba(195,163,110,0.2);
+        }
+        .instructions .tab-1{
+            color: #FAE2AA;
+            display: none;
+        }
+        .instructions .tab-1 .activity_step{
+            margin-top: 0;
+            padding: 0.3rem;
+            color: #FAE2AA;
+            background: rgba(195,163,110,0.2);
+        }
+        .instructions .tab-1 .activity_step li div span{
+            display: inline-block;
+        }
+        .instructions .tab-1 .activity_step li .number{
+            display: inline-block;
+            margin-right: 0.2rem;
+            text-align: center;
+            color: #0C0C0C;
+            background-color: #FAE2AA;
+            width: 0.3rem;
+            height: 0.3rem;
+            line-height: 0.3rem;
+            border-radius: 50%;
+        }
+        .instructions .tab-1 .activity_step li .tis{
+            position: relative;
+            top: -0.2rem;
+        }
+        .instructions .tab-1 .progress {
+            line-height: 1rem;
+        }
+        .instructions .tab-1 .progress .is-done{
+            margin-left: .6rem;
+            margin-right: .4rem;
+        }
+        .instructions .tab-1 .progress .status{
+            position: relative;
+            top: 0.1rem;
+            margin-left: .4rem;
+            width: .3rem;
+            height: .3rem;
+            line-height: .3rem;
+            background: url("./images/right.png") repeat center;
+            background-size: 100%;
+        }
+        .instructions .tab-1 .progress button{
+            display: block;
+            float: right;
+            margin-top: .2rem;
+            width: 1.8rem;
+            height: .6rem;
+            border: none;
+        }
+        .instructions .tab-1 .rules_zone{
+            margin-top: .3rem;
+            padding: 0.3rem;
+            background: rgba(195,163,110,0.2);
+
+        }
+        .instructions .tab-1 .rules_zone h2{
+            margin: 0;
+            height: 1rem;
+            line-height: 1rem;
+            text-align: center;
+        }
+        .instructions .tab-1 .rules_zone ul li{
+            line-height: .5rem;
+        }
+        .instructions .tab-2{
+            display: block;
+            background: rgba(195,163,110,0.2)
+        }
+        .instructions .tab-2 ul li{
+            padding: .3rem .3rem 0;
+        }
+        .instructions .tab-2 ul li:last-child {
+            padding-bottom: .3rem;
+        }
+        .instructions .tab-2 ul li img{
+            width: 100%;
+        }
+
+    </style>
+    <style>
+        .navigation {
+            width: 100%;
+            height: 1rem;
+        }
+        .navigation .back-icon {
+            position: relative;
+            display: inline-block;
+            top:70%;
+            left: 5%;
+            transform: translate(0,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <section>
+            <div class="navigation">
+                <span class="back-icon">
+                    <i class="iconfont icon-fanhui"></i>
+                </span>
+            </div>
+        </section>
+        <section class="head">
+            <div class="tot">
+                <img src="images/r1_bg@3x.png">
+            </div>
+            <div class="advert">
+                <span>每人每次只能领取一次哦~</span>
+            </div>
+            <div class="desc">
+                <span>即插即用的区块链路由器<br>人人都能走进区块链的世界</span>
+            </div>
+        </section>
+        <section class="btn">
+            <button>立即领取</button>
+        </section>
+        <section class="instructions">
+            <div class="tab">
+                <span class="active">活动参与步骤</span>
+                <span>R1介绍</span>
+            </div>
+            <div class="tab-1">
+                <ul class="activity_step">
+                    <li>
+                        <div>
+                            <span class="number">1</span>
+                            <span class="tab-1-desc">邀请7位好友，下载并注册有矿APP</span>
+                        </div>
+                        <div class="progress">
+                            <span class="is-done">完成度</span>
+                            <span class="count">7/7</span>
+                            <span class="status"></span>
+                            <button>邀请好友</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="number tis">2</span>
+                            <span class="tab-1-desc">领取成功后，请按提示填写收货地址<br>（须在11月10日23:59点前填写）</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="rules_zone">
+                    <h2>活动规则</h2>
+                    <ul>
+                        <li>1. 活动时间：2018年11月4日—11月10日</li>
+                        <li>2. 用户邀请7位及以上好友下载并注册有矿APP，即可抢购0元体验价值199元的便携版算力路由器（蚂蚁路由R1）。</li>
+                        <li>3. 每天10点、14点开启0元体验抢购活动，每轮限量777台，抢完即止。</li>
+                        <li>4. 抢购成功的用户，我们将会依照您提交的地址信息在15个工作日内安排发货，收货信息不能修改，请您务必保证收货信息的准确性。如中奖后7个工作日内没有提交收货地址视为弃奖。</li>
+                        <li>5. 每个账号，仅限领取一次。</li>
+                        <li>6. 本活动最终解释权归北京比特大陆科技有限公司所有。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-2">
+                <ul>
+                    <li>
+                        <img src="images/qietu_01.png">
+                    </li>
+                    <li>
+                        <img src="images/qietu_02.png">
+                    </li>
+                    <li>
+                        <img src="images/qietu_03.png">
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

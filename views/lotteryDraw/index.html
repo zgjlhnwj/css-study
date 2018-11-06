@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>lottery</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="../../../reslib/css/c.reset.v1.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="../../../reslib/js/station/c.base.js"></script>
+    <script src="../../../reslib/js/station/c.js.cookie.min.js"></script>
+    <script src="../../../reslib/js/station/c.webview.Javascript.bridge.js"></script>
+    <script src="../../common/js/c.login.opt.js"></script>
+</head>
+<body>
+    <div id="App">
+        <div class="top">
+            <header>
+                <img class="bg_pic" src="./images/head@3x.png">
+                <div class="back" @click="closeWebview">
+                    <img src="../../../reslib/images/history-back-white@3x.png">
+                </div>
+                <div class="ore-count">
+                    <img src="./images/ks@3x.png">
+                    <span v-text="totalOreAmount+' 矿石'"></span>
+                    <div class="coutdown_animation">矿石 -10</div>
+                </div>
+            </header>
+        </div>
+        <div class="prize-list-href" @click="toTransaction">
+            <span>中奖记录 >></span>
+        </div>
+        <div class="center">
+            <div class="luckyday_turn">
+                <section class="section">
+                    <img class="inring" src="./images/lottery@3x.png"/>
+                    <img class="btn" src="./images/lottery-btn@2x.png" />
+                </section>
+            </div>
+        </div>
+        <div class="top-10">
+            <div class="top-10-title">
+                今日幸运矿主
+            </div>
+            <div id="ca">
+                <ul id="c1">
+                    <li v-for="(item, index) in topList">
+                        <span><img :src="imgUrl(item.userHeadImage)" style="width: 0.4rem; height: 0.4rem;border-radius: 0.2rem;"></span>
+                        <span v-text="item.nickname"></span>
+                        <span v-text="item.prizeName"></span>
+                        <span v-text="joinTop(item)"></span>
+                    </li>
+                </ul>
+                <ul id="c2"></ul>
+            </div>
+        </div>
+        <!--活动规则-->
+        <div class="activity_rules">
+            <h1 class="r_title">活动规则</h1>
+            <ul class="r_text">
+                <li>
+                    <span class="t1">一、活动时间：</span>
+                    <span class="t2">2018年11月1日~2018年12月31日</span>
+                </li>
+                <li>
+                    <span class="t1">二、抽奖规则：</span>
+                    <span class="t2">每次抽奖消耗10个矿石。</span>
+                </li>
+                <li>
+                    <span class="t1">三、活动奖项设置：</span>
+                    <span class="t2">奖品包含蚂蚁矿机S9i、BCH数字货币、蚂蚁算力路由器R1、矿石，中奖率约为80%。</span>
+                </li>
+                <li>
+                    <span class="t1">四、获奖公布方式及时间：</span>
+                    <span class="t2">用户中奖后将在页面有弹窗提示。</span>
+                </li>
+                <li>
+                    <span class="t1">五、奖品发放：</span>
+                    <span class="t2">1.抽奖所获虚拟奖品（矿石、BCH）将直接存入您的账户中。</span>
+                    <span class="t2">2.抽奖所获实物奖品（蚂蚁矿机S9i、蚂蚁算力路由器R1）将在15个工作日内发出，奖品包邮仅限中国大陆地区。请在中奖后及时领奖并填写收货地址，如中奖后7个工作日内没有提交收货地址视为弃奖。</span>
+                </li>
+                <li>
+                    <span class="t1">六、活动最终解释权归北京比特大陆科技有限公司所有。</span>
+                </li>
+                
+            </ul>
+        </div>
+        <!--弹框多种情况-->
+        <div class="layer-out"></div>
+        <div class="tips_popzone" id="js-msg-pop">
+            <div class="tips_popzone_bg" id="js-layer-out" @click="closePop"></div>
+            <div class="tips_warpper">
+                <!-- 1、未中奖 2、矿石 3、路由器 4、BCH 5、矿石不足 0、系统问题 -->
+                <div class="text_zone">
+                    <div class="tk_closebtn selector" @click="closePop"></div>
+                    <!--未中奖-->
+                    <section v-if="textZoneType == '1'" class="type_text1">
+                        <p>很遗憾！您未中奖</p>
+                    </section>
+                    <!--已中奖--不带提示-->
+                    <section v-else-if="textZoneType == '2'" class="type_text2">
+                        <p>恭喜您！</p>
+                        <p>抽中了<span v-text="joinRes()">5矿石</span></p>
+                    </section>
+                    <!--已中奖--不带提示-->
+                    <section v-else-if="textZoneType == '4'" class="type_text2">
+                        <p>恭喜您！</p>
+                        <p>抽中了<span v-text="joinRes()">0.0001BCH</span></p>
+                    </section>
+                    <!--已中奖--不带提示-->
+                    <section v-else-if="textZoneType == '3'" class="type_text3">
+                        <p>恭喜您！</p>
+                        <p>抽中<span v-text="joinRes()">算力路由R3一台</span>!</p>
+                        <h4>请前往中奖纪录，领取奖品</h4>
+                    </section>
+                    <!--矿石不足-->
+                    <section v-else-if="textZoneType == '5'" class="type_text4">
+                        <p>矿石不足，赶紧去有矿攻略<br>了解更多矿石获取方式吧！</p>
+                    </section>
+                    <section v-if="textZoneType == '0'" class="type_text1">
+                        <p>转盘有点忙!</p>
+                    </section>
+                </div>
+                <div class="btn_zone">
+                    <!--单按钮 未中奖 系统问题-->
+                    <section v-if="textZoneType == '1' || textZoneType == '0'" class="single_btn">
+                        <button @click="closePop">再抽一次</button>
+                    </section>
+                    <!--单按钮 路由器-->
+                    <section v-if="textZoneType == '3'" class="single_btn">
+                        <button @click="toTransaction">立即领取</button>
+                    </section>
+                    <!--单按钮 BCH-->
+                    <section v-if="textZoneType == '4'" class="single_btn">
+                        <button @click="toBCH">去看看</button>
+                    </section>
+                    <!--单按钮 矿石-->
+                    <section v-if="textZoneType == '2'" class="single_btn">
+                        <button @click="closePop">再抽一次</button>
+                    </section>
+                    <!--双按钮 矿石不足-->
+                    <section v-if="textZoneType == '5'" class="double_btn">
+                        <button @click="closePop">再等等</button>
+                        <button @click="toStrategy">去了解</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../../../reslib/js/station/c.jquery1.8.3.min.js"></script>
+<script src="../../../reslib/js/station/c.vue.min.js"></script>
+<script src="../../common/conf/c.host.cfg.js"></script>
+<script src="../../../reslib/js/station/c.vconsole.min.js"></script>
+<!-- 引入组件库 -->
+<script src="./js/TweenMax.min.js"></script>
+<!-- 引入业务JS -->
+<script src="./js/index.js"></script>
